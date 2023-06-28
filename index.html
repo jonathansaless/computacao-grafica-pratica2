@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>CG Animação Gráfica</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computação Gráfica - Trab. Prático 2</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="icon" href="./assets/img/icon.png"/>
 </head>
 <body>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js'></script><script type="module" src="./script.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../../scripts/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./scripts/praca.js"></script>
 </body>
 </html>
