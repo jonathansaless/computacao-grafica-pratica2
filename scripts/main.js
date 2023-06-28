@@ -61,7 +61,7 @@ window.onresize = function () {
 function createCar() {
     const loader = new GLTFLoader();
 
-    loader.load('/scripts/models/cartoon_car.glb', function (glb) {
+    loader.load('/assets/models/cartoon_car.glb', function (glb) {
         const car = glb.scene;
         car.scale.set(35, 35, 35);
         scene.add(car);
@@ -124,10 +124,6 @@ function createCar() {
     });
 }
 
-
-
-
-
 // Função de animação
 function animate() {
     requestAnimationFrame(animate);
@@ -136,26 +132,3 @@ function animate() {
 
 // Iniciar a animação
 animate();
-
-
-function carAnimation() {
-    if (695 <= swimmer.position.z && swimmer.position.z < 2000 && swimmer.position.x == 1200) {
-        if (swimmer.rotation.y == -300) {
-            swimmer.rotation.y = 0
-        }
-
-        swimmer.position.z += 5;
-
-    } else if (swimmer.position.x < -2000 && swimmer.position.z >= 700) {
-        swimmer.rotation.y = 600;
-        swimmer.position.z -= 5;
-
-    } else if (swimmer.position.z < 700) {
-        swimmer.rotation.y = -300;
-        swimmer.position.x += 5;
-
-    } else if (swimmer.position.z >= 2000) {
-        swimmer.rotation.y = 300;
-        swimmer.position.x -= 5;
-    }
-}

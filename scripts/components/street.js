@@ -3,9 +3,11 @@ import { loader } from "../constants/loaders.js";
 
 // Criar a geometria das ruas
 export function createStreets(scene) {
-    const streetGeometry = new THREE.BoxGeometry(1000, 0.1, 11000);
-    const streetMaterial = new THREE.MeshBasicMaterial({ map: 
-        loader.load('/assets/textures/estrada.jpg') });
+    const streetGeometry = new THREE.BoxGeometry(1000, 40, 11000);
+    const streetMaterial = new THREE.MeshBasicMaterial({
+        map:
+            loader.load('/assets/textures/estrada.jpg')
+    });
 
     // Criar as ruas ao redor da praça
     const street1 = new THREE.Mesh(streetGeometry, streetMaterial);
