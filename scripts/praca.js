@@ -5,6 +5,8 @@ import {OrbitControls} from "./jsm/controls/OrbitControls.js";
 
 import { GLTFLoader } from "./jsm/loaders/GLTFLoader.js";
 
+import { Sky } from './jsm/objects/Sky.js'
+
 // Criar a cena
 const scene = new THREE.Scene();
 
@@ -22,7 +24,14 @@ renderer.setPixelRatio( window.devicePixelRatio );
 // Setando o tamanho do rederizador, abaixo é setado o espaço disponível da janela em altura e largura
 renderer.setSize(window.innerWidth, window.innerHeight);
 // adiciona o renderizador na página
+
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
 document.body.appendChild(renderer.domElement);
+
+
+
 
 // cria controlador para que usuário consiga movimentar a tela com o mouse
 const controlador = new OrbitControls(camera, renderer.domElement);
@@ -70,6 +79,36 @@ scene.add(car1);
 const car2 = new THREE.Mesh(carGeometry, carMaterial);
 car2.position.set(1, 0.05, 0);
 scene.add(car2);
+
+// const light = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+// scene.add(light);
+
+loader = new GLTFLoader();
+loader.load('/scripts/models/cartoon_car.glb', function(glb) {
+    //glb.scale.set(50, 50, 50);
+    scene.add(glb.scene)
+});
+
+const sky = new Sky();
+
+sky.scale.setScalar(10000);
+
+scene.add(sky);
+
+const pmremGenerator = new THREE.PMREMGenerator(renderer);
+
+const sun = new THREE.Vector3();
+
+const theta = Math.PI * (0.49 - 0.5);
+const phi = 2 * Math.PI * (0.205 - 0.5);
+
+sun.x = Math.cos(phi);
+sun.y = Math.sin(phi) * Math.sin(theta);
+sun.z = -Math.sin(phi) * Math.cos(theta);
+
+sky.material.uniforms['sunPosition'].value.copy(sun);
+
+scene.environment = pmremGenerator.fromScene(sky).texture;
 
 // ao mudar o tamanho da tela, será renderizado no novo tamanho da tela. Isso torna o projeto mais responsivo
 window.onresize = function() {
