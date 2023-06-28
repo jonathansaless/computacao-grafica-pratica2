@@ -1,52 +1,39 @@
 import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 import { loader } from "../constants/loaders.js";
+import { createParkBench } from "./park_benchs.js";
+import { degreesToRadians } from "../constants/convertions.js";
+import { createSideWalkBigger } from "./side_walks.js";
 
 // Criar a geometria da praça
 export function createSquare(scene) {
   const squareGeometry = new THREE.BoxGeometry(9000, 20, 9000);
   const squareMaterial = new THREE.MeshBasicMaterial({
-    map: loader.load('/assets/textures/grama3.jpg')
+    map: loader.load('/assets/textures/grama.jpg')
   });
   const square = new THREE.Mesh(squareGeometry, squareMaterial);
   scene.add(square);
 
-  // Criar calçadas 
-  const sidewalkGeometry = new THREE.BoxGeometry(3400, 40, 1500);
-  const sidewalkMaterial = new THREE.MeshBasicMaterial({
-    map:
-      loader.load('/assets/textures/calcada.avif')
-  });
+  createSideWalkBigger(scene, 2800, 1, -20, 0);
+  createSideWalkBigger(scene, -2800, 1, -20, 0);
+  createSideWalkBigger(scene, -20, 1, 2800, Math.PI / 2);
+  createSideWalkBigger(scene, -20, 1, -2800, Math.PI / 2);
 
-  createWalkBigger(scene, 2800, 1, -20, 0);
-  createWalkBigger(scene, -2800, 1, -20, 0);
-  createWalkBigger(scene, -20, 1, 2800, Math.PI / 2);
-  createWalkBigger(scene, -20, 1, -2800, Math.PI / 2);
+  // OK CALÇADA CENTRAL
+  createCalcadaCentralBigger(scene);
+  createCalcadaCentralSmaller(scene);
+  createStatue(scene);
 
-  // OK
-  // createCalcadaCentralBigger(scene);
-  // createCalcadaCentralSmaller(scene);
-  // createStatue(scene); 
+  // OK BANCOS DA PRAÇA
+  createParkBench(scene, 2400, 0, -600, 0);
+  createParkBench(scene, -2400, 0, 600, 180);
+  createParkBench(scene, 600, 0, 2400, -90);
+  createParkBench(scene, -600, 0, -2400, 90);
 
-}
-
-function createWalkBigger(scene, pos_x, pos_y, pos_z, rotation) {
-  // Geometria das Calçadas
-  const sidewalkGeometry = new THREE.BoxGeometry(3400, 60, 1500);
-  const sidewalkMaterial = new THREE.MeshBasicMaterial({
-    map:
-      loader.load('/assets/textures/calcada.avif')
-  });
-
-  // Posicionando Calçada
-  const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
-  sidewalk.position.set(pos_x, pos_y, pos_z);
-  sidewalk.rotation.y = rotation;
-  scene.add(sidewalk);
 }
 
 function createStatue(scene) {
-   // Carregar um modelo GLTF no meio da praça
+  // Carregar um modelo GLTF no meio da praça
   const gltfLoader = new GLTFLoader();
   gltfLoader.load('/assets/models/juliaan_dillens.glb', function (gltf) {
     const model = gltf.scene;
@@ -55,6 +42,7 @@ function createStatue(scene) {
     scene.add(model);
   });
 }
+
 function createCalcadaCentralBigger(scene) {
   // Criar a geometria do cilindro (círculo)
   const circleGeometry = new THREE.CylinderGeometry(

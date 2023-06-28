@@ -5,11 +5,10 @@ import { createSky } from "./components/sky.js";
 import { createStreets } from "./components/street.js";
 import { createSquare } from "./components/public_square.js";
 import { GLTFLoader } from "GLTFLoader";
-import { Tween } from 'tween';
 
-let camera, scene, renderer, mesh, car1, car2, carMixer;
+let camera, scene, renderer;
+
 init();
-
 
 function init() {
     // SCENE
@@ -29,23 +28,17 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 20000);
     camera.position.set(0, 1000, 6500);
 
-    createCar();
+    
+    setController(camera, renderer);
+    createSky(scene, renderer);
+    //createCar();
+    createSquare(scene);
+    createStreets(scene);
 }
 
 
-setController(camera, renderer);
-createSky(scene, renderer);
-createSquare(scene);
-createStreets(scene);
-
 // const light = new THREE.DirectionalLight(0xFFFFFF, 0.5);
 // scene.add(light);
-
-// loader = new GLTFLoader();
-// loader.load('/scripts/models/cartoon_car.glb', function(glb) {
-//     //glb.scale.set(50, 50, 50);
-//     scene.add(glb.scene)
-// });
 
 // ao mudar o tamanho da tela, será renderizado no novo tamanho da tela. Isso torna o projeto mais responsivo
 window.onresize = function () {
@@ -54,7 +47,6 @@ window.onresize = function () {
 
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
 
 
 // Criar a geometria do carro
