@@ -1,9 +1,11 @@
 import * as THREE from "three";
-import { GLTFLoader } from "GLTFLoader";
+
 import { loader } from "../constants/loaders.js";
-import { createParkBench } from "./park_benchs.js";
-import { degreesToRadians } from "../constants/convertions.js";
-import { createSideWalkBigger } from "./side_walks.js";
+import { createParkBench } from "./park_benches.js";
+import { createCentralSideWalkBigger, createCentralSideWalkSmaller, createSideWalkBigger, createSideWalkMediun, createSideWalkSmaller } from "./side_walks.js";
+import { createStatue } from "./statue.js";
+import { createTree } from "./trees.js";
+import { createBuilding } from "./buildings.js";
 
 // Criar a geometria da praça
 export function createSquare(scene) {
@@ -14,75 +16,55 @@ export function createSquare(scene) {
   const square = new THREE.Mesh(squareGeometry, squareMaterial);
   scene.add(square);
 
+  // OK CALÇADAS MAIORIES QUE ENCONTRAM AO CENTRO
   createSideWalkBigger(scene, 2800, 1, -20, 0);
   createSideWalkBigger(scene, -2800, 1, -20, 0);
-  createSideWalkBigger(scene, -20, 1, 2800, Math.PI / 2);
-  createSideWalkBigger(scene, -20, 1, -2800, Math.PI / 2);
+  createSideWalkBigger(scene, -20, 1, 2800, 90);
+  createSideWalkBigger(scene, -20, 1, -2800, 90);
+
+  // OK CALÇADAS DAS BEIRAS
+  createSideWalkMediun(scene, -2625, 1, -4000, 0);
+  createSideWalkMediun(scene, 2625, 1, -4000, 0);
+  createSideWalkMediun(scene, -2625, 1, 4000, 0);
+  createSideWalkMediun(scene, 2625, 1, 4000, 0);
+  createSideWalkSmaller(scene, 4020, 1, 2100, 90);
+  createSideWalkSmaller(scene, -4020, 1, 2100, 90);
+  createSideWalkSmaller(scene, 4020, 1, -2100, 90);
+  createSideWalkSmaller(scene, -4020, 1, -2100, 90);
 
   // OK CALÇADA CENTRAL
-  createCalcadaCentralBigger(scene);
-  createCalcadaCentralSmaller(scene);
+  createCentralSideWalkBigger(scene);
+  createCentralSideWalkSmaller(scene);
+
+  // OK CRIAÇÃO DE ESTÁTUA CENTRAL
   createStatue(scene);
 
   // OK BANCOS DA PRAÇA
-  createParkBench(scene, 2400, 0, -600, 0);
-  createParkBench(scene, -2400, 0, 600, 180);
-  createParkBench(scene, 600, 0, 2400, -90);
-  createParkBench(scene, -600, 0, -2400, 90);
+  // createParkBench(scene, 2400, 0, -600, 0);
+  // createParkBench(scene, -2400, 0, 600, 180);
+  // createParkBench(scene, 600, 0, 2400, -90);
+  // createParkBench(scene, -600, 0, -2400, 90);
 
+  // OK BANCOS DA PRAÇA
+  createParkBench(scene, -2150, 0, 3600, 0);
+  createParkBench(scene, 2150, 0, 3600, 0);
+  createParkBench(scene, -2150, 0, -3600, 180);
+  createParkBench(scene, 2150, 0, -3600, 180);
+
+  createParkBench(scene, 3600, 0, 2150, 90);
+  createParkBench(scene, -3600, 0, 2150, -90);
+  createParkBench(scene, 3600, 0, -2150, 90);
+  createParkBench(scene, -3600, 0, -2150, -90);
+
+  // OK ÁRVORES
+  createTree(scene, 2300, 0, 1800);
+  createTree(scene, -2300, 0, 1800);
+  createTree(scene, 2300, 0, -2200);
+  createTree(scene, -2000, 0, -2200);
+
+  // PRÉDIOS
+  createBuilding(scene, 2300, 0, 1800);
 }
 
-function createStatue(scene) {
-  // Carregar um modelo GLTF no meio da praça
-  const gltfLoader = new GLTFLoader();
-  gltfLoader.load('/assets/models/juliaan_dillens.glb', function (gltf) {
-    const model = gltf.scene;
-    model.position.set(0, 20, 0);
-    model.scale.set(100, 100, 100);
-    scene.add(model);
-  });
-}
 
-function createCalcadaCentralBigger(scene) {
-  // Criar a geometria do cilindro (círculo)
-  const circleGeometry = new THREE.CylinderGeometry(
-    1500, // raio
-    1500, // raio
-    100,  // altura do cilindro
-    32    // segmentos do circulo
-  );
 
-  // Criar o material do círculo
-  const circleMaterial = new THREE.MeshBasicMaterial({
-    map:
-      loader.load('/assets/textures/calcada.png')
-  });
-  // Criar a malha (mesh) do círculo
-  const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
-
-  circleMesh.position.set(0, 70, 0);
-  // Adicionar o círculo à cena
-  scene.add(circleMesh);
-}
-
-function createCalcadaCentralSmaller(scene) {
-  // Criar a geometria do cilindro (círculo)
-  const circleGeometry = new THREE.CylinderGeometry(
-    1300, // raio
-    1300, // raio
-    100,  // altura do cilindro
-    32    // segmentos do circulo
-  );
-
-  // Criar o material do círculo
-  const circleMaterial = new THREE.MeshBasicMaterial({
-    map:
-      loader.load('/assets/textures/calcada.png')
-  });
-  // Criar a malha (mesh) do círculo
-  const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
-
-  circleMesh.position.set(0, 170, 0);
-  // Adicionar o círculo à cena
-  scene.add(circleMesh);
-}

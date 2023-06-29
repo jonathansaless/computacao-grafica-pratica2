@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { setController } from "./components/controller.js";
 import { createSky } from "./components/sky.js";
-import { createStreets } from "./components/street.js";
+import { createStreets } from "./components/streets.js";
 import { createSquare } from "./components/public_square.js";
 import { GLTFLoader } from "GLTFLoader";
 
