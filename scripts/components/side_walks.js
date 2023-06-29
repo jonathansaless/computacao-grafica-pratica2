@@ -2,9 +2,25 @@ import * as THREE from "three";
 import { loader } from "../constants/loaders.js";
 import { degreesToRadians } from "../constants/convertions.js";
 
-export function createSideWalkOutside(scene, pos_x, pos_y, pos_z, rotation) {
+export function createSideWalkOutsideBigger(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
-    const sidewalkGeometry = new THREE.BoxGeometry(14000, 60, 1500);
+    const sidewalkGeometry = new THREE.BoxGeometry(16000, 60, 1500);
+    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+        map:
+            loader.load('/assets/textures/calcada.avif')
+    });
+
+    // Posicionando Calçada
+    const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
+    sidewalk.position.set(pos_x, pos_y, pos_z);
+    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.receiveShadow = true;
+    scene.add(sidewalk);
+}
+
+export function createSideWalkOutsideSmaller(scene, pos_x, pos_y, pos_z, rotation) {
+    // Geometria das Calçadas
+    const sidewalkGeometry = new THREE.BoxGeometry(13000, 60, 1500);
     const sidewalkMaterial = new THREE.MeshBasicMaterial({
         map:
             loader.load('/assets/textures/calcada.avif')
@@ -29,6 +45,7 @@ export function createSideWalkBigger(scene, pos_x, pos_y, pos_z, rotation) {
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
     sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
 
@@ -44,6 +61,7 @@ export function createSideWalkMediun(scene, pos_x, pos_y, pos_z, rotation) {
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
     sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
 
@@ -59,6 +77,7 @@ export function createSideWalkSmaller(scene, pos_x, pos_y, pos_z, rotation) {
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
     sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
 
@@ -80,6 +99,7 @@ export function createCentralSideWalkBigger(scene) {
     const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
 
     circleMesh.position.set(0, 70, 0);
+    circleMesh.receiveShadow = true;
     // Adicionar o círculo à cena
     scene.add(circleMesh);
 }
@@ -102,6 +122,7 @@ export function createCentralSideWalkSmaller(scene) {
     const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
 
     circleMesh.position.set(0, 170, 0);
+    circleMesh.receiveShadow = true;
     // Adicionar o círculo à cena
     scene.add(circleMesh);
 }

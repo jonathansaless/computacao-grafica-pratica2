@@ -7,16 +7,16 @@ export function createCar(scene, renderer, camera) {
 
     loader.load('/assets/models/cartoon_car.glb', function (glb) {
         const car = glb.scene;
-        car.scale.set(35, 35, 35);
+        car.scale.set(100, 100, 100);
         scene.add(car);
 
         // Defina a posição inicial e final do modelo
         const positions = [
-            new THREE.Vector3(4700, 0.1, -4600),
-            new THREE.Vector3(4700, 0.1, 4600),
-            new THREE.Vector3(-4700, 0.1, 4600),
-            new THREE.Vector3(-4700, 0.1, -4600),
-            new THREE.Vector3(4700, 0.1, -4600)
+            new THREE.Vector3(5000, 0.1, -5000),
+            new THREE.Vector3(5000, 0.1, 5000),
+            new THREE.Vector3(-5000, 0.1, 5000),
+            new THREE.Vector3(-5000, 0.1, -5000),
+            new THREE.Vector3(5000, 0.1, -5000)
         ];
 
         // Defina a velocidade da animação
