@@ -4,7 +4,7 @@ import { degreesToRadians } from "../constants/convertions.js";
 
 export function createSideWalkOutside(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
-    const sidewalkGeometry = new THREE.BoxGeometry(9000, 60, 1500);
+    const sidewalkGeometry = new THREE.BoxGeometry(14000, 60, 1500);
     const sidewalkMaterial = new THREE.MeshBasicMaterial({
         map:
             loader.load('/assets/textures/calcada.avif')

@@ -1,24 +1,14 @@
 import { GLTFLoader } from "GLTFLoader";
 import { degreesToRadians } from "../constants/convertions.js";
 
-export function createBuilding1(scene, pos_x, pos_y, pos_z) {
-    // Carregar o modelo GLB dos edificios
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/low_poly_building.glb', function (gltf) {
-        const model = gltf.scene;
-        model.position.set(pos_x, pos_y, pos_z);
-        model.scale.set(500, 500, 500);
-        scene.add(model);
-    });
-}
 export function createBuilding2(scene, pos_x, pos_y, pos_z) {
     // Carregar o modelo GLB dos edificios
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/modular_house_wall.glb', function (gltf) {
+    gltfLoader.load('/assets/models/realistic_chicago_buildings.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
-        model.scale.set(500, 500, 500);
-        model.rotateY(degreesToRadians(90));
+        model.scale.set(50, 50, 50);
+        model.rotateY(degreesToRadians(-90));
         scene.add(model);
     });
 }
@@ -28,7 +18,7 @@ export function createBuilding3(scene, pos_x, pos_y, pos_z) {
     gltfLoader.load('/assets/models/futuristic_building.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
-        model.scale.set(200, 200, 200);
+        model.scale.set(250, 250, 250);
         model.rotateY(degreesToRadians(90));
         scene.add(model);
     });
@@ -39,7 +29,7 @@ export function createBuilding4(scene, pos_x, pos_y, pos_z) {
     gltfLoader.load('/assets/models/old_apartment_building.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
-        model.scale.set(5, 5, 5);
+        model.scale.set(6, 6, 6);
         model.rotateY(degreesToRadians(90));
         scene.add(model);
     });

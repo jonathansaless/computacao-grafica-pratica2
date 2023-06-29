@@ -5,7 +5,7 @@ import { createParkBench } from "./park_benches.js";
 import { createCentralSideWalkBigger, createCentralSideWalkSmaller, createSideWalkBigger, createSideWalkMediun, createSideWalkOutside, createSideWalkSmaller } from "./side_walks.js";
 import { createStatue } from "./statue.js";
 import { createTree } from "./trees.js";
-import { createBuilding1, createBuilding2, createBuilding3, createBuilding4, createBuilding5, createBuilding6, createBuilding7 } from "./buildings.js";
+import { createBuilding2, createBuilding3, createBuilding4, createBuilding5, createBuilding6, createBuilding7 } from "./buildings.js";
 
 // Criar a geometria da praça
 export function createSquare(scene) {
@@ -69,15 +69,13 @@ export function createSquare(scene) {
   // createTree(scene, 2300, 0, -2200);
   // createTree(scene, -2000, 0, -2200);
 
-  // PRÉDIOS
-  // createBuilding1(scene, 7000, 0, 3000);
-  // createBuilding2(scene, 6300, 0, -1200);
-  // createBuilding3(scene, -6800, -50, -1700);
-  // createBuilding4(scene, -7000, -50, 2000);
-  // createBuilding5(scene, 2000, 0, 7300);
+  // OK PRÉDIOS
+  createBuilding2(scene, 6300, -600, -2500);
+  createBuilding3(scene, -6800, -50, -1700);
+  createBuilding4(scene, -7000, -50, 2500);
+  createBuilding5(scene, 2000, 0, 7300);
   createBuilding6(scene, -3900, -150, -6400);
   createBuilding7(scene, -500, 250, -6800);
-  // createBuilding5(scene, 7000, 0, 3000);
 
 }
 
