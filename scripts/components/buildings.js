@@ -61,7 +61,7 @@ export function createBuilding6(scene, pos_x, pos_y, pos_z) {
 export function createBuilding7(scene, pos_x, pos_y, pos_z) {
     // Carregar o modelo GLB das árvores
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/construction1.glb', function (gltf) {
+    gltfLoader.load('/assets/models/building1.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
         model.scale.set(400, 400, 400);
