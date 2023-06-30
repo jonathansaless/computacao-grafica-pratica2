@@ -3,17 +3,26 @@ import { GLTFLoader } from "GLTFLoader";
 
 // Criação do carro
 export function createCar(scene, camera, renderer) {
+    // Criação de um objeto loader usando a classe GLTFLoader do Three.js
     const loader = new GLTFLoader();
 
+    // Carregando o modelo do carro usando o loader
     loader.load('/assets/models/cars/cartoon_car.glb', function (glb) {
+        // Obtendo a cena do modelo do carro
         const carModel = glb.scene;
+
+        // Definindo a escala do modelo do carro
         carModel.scale.set(100, 100, 100);
+
+        // Definindo a propriedade castShadow como true para permitir a projeção de sombras
         carModel.traverse(c => {
             c.castShadow = true;
         });
+
+        // Adicionando o modelo do carro à cena
         scene.add(carModel);
 
-        // Defina a posição inicial e final do modelo
+        // Definindo as posições iniciais e finais do modelo do carro
         const positions = [
             new THREE.Vector3(5000, -70, -5000),
             new THREE.Vector3(5000, -70, 5000),
@@ -22,51 +31,54 @@ export function createCar(scene, camera, renderer) {
             new THREE.Vector3(5000, -70, -5000)
         ];
 
-        // Defina a velocidade da animação
+        // Definindo a velocidade da animação
         const speed = 0.002;
 
-        // Defina uma variável para rastrear o progresso da animação
+        // Variável para rastrear o progresso da animação
         let progress = 0;
 
-        // Defina o índice inicial do vetor de posições
+        // Índice inicial do vetor de posições
         let positionIndex = 0;
 
-        // Atualize a posição do modelo no loop de renderização
+        // Função de atualização para animar o carro
         function update() {
             requestAnimationFrame(update);
 
-            // Obtenha a posição inicial e final com base no índice atual
+            // Obtendo a posição inicial e final com base no índice atual
             const initialPosition = positions[positionIndex];
             const targetPosition = positions[positionIndex + 1];
 
-            // Interpole a posição do modelo entre a posição inicial e final com base no progresso
+            // Interpolação da posição do modelo do carro entre a posição inicial e final com base no progresso
             carModel.position.lerpVectors(initialPosition, targetPosition, progress);
 
-            // Atualize o progresso da animação
+            // Atualização do progresso da animação
             progress += speed;
 
-            // Verifique se a animação chegou ao fim
+            // Verificando se a animação chegou ao fim
             if (progress >= 1) {
-                progress = 0; // Reinicie o progresso para iniciar a próxima animação
-                positionIndex++; // Avance para a próxima posição no vetor
+                progress = 0; // Reiniciando o progresso para iniciar a próxima animação
+                positionIndex++; // Avançando para a próxima posição no vetor
+
+                // Verificando se o índice atingiu o final do vetor e reiniciando-o se necessário
                 if (positionIndex >= positions.length - 1) {
-                    positionIndex = 0; // Reinicie o índice para começar novamente
+                    positionIndex = 0; // Reiniciando o índice para começar novamente
                 }
 
-                // Calcule a direção do movimento
+                // Cálculo da direção do movimento
                 const direction = targetPosition.clone().sub(initialPosition).normalize();
 
-                // Calcule o ângulo de rotação
+                // Cálculo do ângulo de rotação
                 const angle = Math.atan2(-direction.z, direction.x);
 
-                // Aplique a rotação ao modelo
+                // Aplicando a rotação ao modelo do carro
                 carModel.rotation.y = angle;
             }
 
+            // Renderização da cena com o carro atualizado
             renderer.render(scene, camera);
         }
 
-        // Inicie a animação
+        // Iniciando a animação do carro
         update();
     });
 }
