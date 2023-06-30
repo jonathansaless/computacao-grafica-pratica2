@@ -1,10 +1,8 @@
-import { GLTFLoader } from "GLTFLoader";
-import * as THREE from "three";
+import { gltfLoader } from "../constants/loaders";
 
 export function createStatue(scene) {
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/square_components/statue_juliaan_dillens.glb', function (gltf) {
-        const model = gltf.scene;
+    gltfLoader.load('/assets/models/square_components/statue_juliaan_dillens.glb', function (glb) {
+        const model = glb.scene;
         model.position.set(0, 20, 0);
         model.scale.set(100, 100, 100);
         model.traverse(function(node) {
@@ -13,8 +11,8 @@ export function createStatue(scene) {
             }
         })
         
-        // model.castShadow = true; // Habilitar a projeção de sombras para cada mesh
-        model.receiveShadow = true; // Habilitar o recebimento de sombras para cada mesh
+        model.castShadow = true;    // habilitar a emissão de sombra
+        model.receiveShadow = true; // habilitar o recebimento de sombra
         scene.add(model);
     });
 }

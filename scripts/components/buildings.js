@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { gltfLoader } from "../constants/loaders.js";
 
+// Criação dos prédios
 export function createBuildings(scene) {
     createBuilding(scene, '/assets/models/buildings/building1.glb', 9000, 3000, -7400, 2000, -90);
     createBuilding(scene, '/assets/models/buildings/building2.glb', 7400, -650, -2500, 50, -90);

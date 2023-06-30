@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 
-// Criar a geometria do carro
+// Criação do carro
 export function createCar(scene, camera, renderer) {
     const loader = new GLTFLoader();
 

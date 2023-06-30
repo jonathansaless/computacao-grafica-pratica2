@@ -3,9 +3,9 @@ import { Sky } from "sky"
 
 let sky, sun;
 
+// Criação do Céu com o Sol
 export function createSky(scene, camera, renderer) {
 
-    // Add Sky
     sky = new Sky();
     sky.scale.setScalar(450000);
     scene.add(sky);
@@ -18,7 +18,7 @@ export function createSky(scene, camera, renderer) {
     uniforms['mieCoefficient'].value = 0.005;
     uniforms['mieDirectionalG'].value = 0.7;
 
-    const phi = THREE.MathUtils.degToRad(90 - 2); // elevação do sol
+    const phi = THREE.MathUtils.degToRad(90 - 2); // elevação do sol = 2
     const theta = THREE.MathUtils.degToRad(0); // posição do sol horizontalmente
 
     sun.setFromSphericalCoords(1, phi, theta);
@@ -31,18 +31,17 @@ export function createSky(scene, camera, renderer) {
     addLight(scene);
 }
 
+// Adição de luzes na cena para gerar sombras
 function addLight(scene) {
     // luz ambiente apenas para algumas partes não ficarem muito escuras
     const ambientLight = new THREE.AmbientLight(0x999999); 
     scene.add(ambientLight);
 
-    // luz que gerará(ria) a sombra
     const light = new THREE.DirectionalLight(0xFFFFFF, 1); 
     light.position.set(0, 2000, 7000);
     light.target.position.set(0, 0, 2000);
     light.castShadow = true;
 
-    // light.shadow.radius = 500;
     light.shadow.mapSize.width = 2048; // Qualidade da sombra 2048x2048
     light.shadow.mapSize.height = 2048;
     light.shadow.camera.top = 15000;
@@ -51,7 +50,6 @@ function addLight(scene) {
     light.shadow.camera.bottom = -15000;
     light.shadow.camera.near = 1;
     light.shadow.camera.far = 15000;
-    // light.shadow.bias = -0.0001;
 
     scene.add(light, light.target);
 }

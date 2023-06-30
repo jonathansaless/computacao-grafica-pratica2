@@ -1,22 +1,17 @@
 import * as THREE from "three";
-import { AnimationMixer } from 'three';
-import { GLTFLoader } from "GLTFLoader";
-import { FBXLoader } from "FBXLoader";
 import { gltfLoader } from "../constants/loaders.js";
-// import { loader } from "../constants/loaders";
 
 export function createPeople(scene) {
     const people = [];
 
-    people.push(createPerson(scene, '/assets/models/people/sophia_animated.glb', -0, 50, 0, 4, 0));
-
-    // people.push(createPerson(scene, '/assets/models/people/sitting_man.glb', 2200, 0, -500, 130, 0));
-
-    people.push(createPerson(scene, '/assets/models/people/man_top_model.glb', 0, 0, -7000, 200, 0));
-
-    people.push(createPerson(scene, '/assets/models/people/walking_and_dancing_woman.glb', 0, 30, 3000, 310, 90));
-
-    // people.push(createPerson(scene, '/assets/models/people/walking_and_dancing_woman.glb', 0, 30, 4000, 350, 90));
+    people.push(createPerson(scene, '/assets/models/people/person1.glb', -2500, 50, -500, 4));
+    people.push(createPerson(scene, '/assets/models/people/person2.glb', 0, 0, -7200, 200));
+    people.push(createPerson(scene, '/assets/models/people/person3.glb', -500, 30, 3000, 310, 90));
+    people.push(createPerson(scene, '/assets/models/people/person4.glb', 3600, 110, 2000, 150, 90));
+    people.push(createPerson(scene, '/assets/models/people/person5.glb', -6800, 0, -2000, 380, 90));
+    people.push(createPerson(scene, '/assets/models/people/person6.glb', 3700, 0, -2000, 130, 90));
+    people.push(createPerson(scene, '/assets/models/people/person7.glb', -6800, 0, 2000, 4));
+    people.push(createPerson(scene, '/assets/models/people/person8.glb', 2000, 0, -3650, 140, 180));
 
     // Função para atualizar as animações no loop de renderização
     function updateAnimations(deltaTime) {
@@ -28,10 +23,9 @@ export function createPeople(scene) {
     return { updateAnimations };
 }
 
-function createPerson(scene, modelPath, pos_x, pos_y, pos_z, scale, rotation) {
+function createPerson(scene, modelPath, pos_x, pos_y, pos_z, scale, rotation = 0) {
     let mixer; // Variável para armazenar a instância de AnimationMixer
 
-    // Carregar o modelo GLB da pessoa
     gltfLoader.load(modelPath, function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
@@ -42,13 +36,12 @@ function createPerson(scene, modelPath, pos_x, pos_y, pos_z, scale, rotation) {
         });
         scene.add(model);
 
-        // Obter a animação de caminhada
         const animations = gltf.animations;
         if (animations && animations.length > 0) {
             mixer = new THREE.AnimationMixer(model);
             // Adicionar a animação à mixer
             const animation = mixer.clipAction(animations[0]);
-            animation.play(); // Iniciar a animação de caminhada
+            animation.play(); // Iniciar a animação
         }
     });
 

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { loader } from "../constants/loaders.js";
+import { textureLoader } from "../constants/loaders.js";
 
 export function createStreets(scene) {
     createStreet(scene, 5500, 0, 0, 2000, 40, 13000);
@@ -11,7 +11,7 @@ export function createStreets(scene) {
 function createStreet(scene, pos_x, pos_y, pos_z, width, height, length, rotation = 0) {
     const streetGeometry = new THREE.BoxGeometry(width, height, length);
     const streetMaterial = new THREE.MeshStandardMaterial({
-        map: loader.load('/assets/textures/estrada.jpg')
+        map: textureLoader.load('/assets/textures/estrada.jpg')
     });
 
     const street = new THREE.Mesh(streetGeometry, streetMaterial);

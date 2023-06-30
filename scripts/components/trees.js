@@ -1,4 +1,4 @@
-import { GLTFLoader } from "GLTFLoader";
+import { gltfLoader } from "../constants/loaders";
 
 export function createTrees(scene) {
     createTree(scene, 2300, 0, 1800);
@@ -8,10 +8,8 @@ export function createTrees(scene) {
 }
 
 function createTree(scene, pos_x, pos_y, pos_z) {
-    // Carregar o modelo GLB das árvores
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/trees/oak_trees.glb', function (gltf) {
-        const model = gltf.scene;
+    gltfLoader.load('/assets/models/trees/oak_trees.glb', function (glb) {
+        const model = glb.scene;
         model.position.set(pos_x, pos_y, pos_z);
         model.scale.set(1300, 1500, 1300);
         model.traverse(c => {

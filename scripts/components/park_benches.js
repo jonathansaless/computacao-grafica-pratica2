@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { gltfLoader } from "../constants/loaders.js";
 
+// Criação dos Bancos da Praça
 export function createParkBenches(scene) {
     createParkBench(scene, -2150, 0, 3600, 0);
     createParkBench(scene, 2150, 0, 3600, 0);
@@ -13,7 +14,6 @@ export function createParkBenches(scene) {
 }
 
 function createParkBench(scene, pos_x, pos_y, pos_z, rotation) {
-    // Carregar um modelo GLTF no meio da praça
     gltfLoader.load('/assets/models/square_components/park_bench.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
