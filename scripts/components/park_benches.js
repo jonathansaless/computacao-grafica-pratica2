@@ -14,7 +14,7 @@ export function createParkBenches(scene) {
 }
 
 function createParkBench(scene, pos_x, pos_y, pos_z, rotation) {
-    gltfLoader.load('/assets/models/square_components/park_bench.glb', function (gltf) {
+    gltfLoader.load('/assets/models/square_objects/park_bench.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
         model.scale.set(4, 4, 4);

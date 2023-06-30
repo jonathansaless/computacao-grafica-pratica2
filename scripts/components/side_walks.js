@@ -1,11 +1,11 @@
 import * as THREE from "three";
-import { loader } from "../constants/loaders.js";
+import { textureLoader } from "../constants/loaders.js";
 
 function createSideWalk(scene, pos_x, pos_y, pos_z, rotation, width, length) {
     const sidewalkGeometry = new THREE.BoxGeometry(width, 60, length);
     const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif', function (texture) {
+            textureLoader.load('/assets/textures/calcada.avif', function (texture) {
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(2, 2);
             })
@@ -28,7 +28,7 @@ function createCentralSideWalk(scene, radius, height) {
 
     const circleMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.png')
+            textureLoader.load('/assets/textures/calcada.png')
     });
 
     const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);

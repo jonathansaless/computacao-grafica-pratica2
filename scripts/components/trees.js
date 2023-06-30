@@ -1,4 +1,4 @@
-import { gltfLoader } from "../constants/loaders";
+import { gltfLoader } from "../constants/loaders.js";
 
 export function createTrees(scene) {
     createTree(scene, 2300, 0, 1800);

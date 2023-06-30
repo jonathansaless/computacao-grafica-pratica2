@@ -18,7 +18,7 @@ Trabalho prático 2 da disciplina de Computação Gráfica da UFPA no período 2
 # Execução local do projeto utilizando o Live Server do VSCode
 - Realizar o download ou o clone do repositório com o comando no terminal:
 ```
-git clone https://github.com/jonathansaless/computacao-grafica-threejs.git
+git clone https://github.com/jonathansaless/computacao-grafica-pratica2.git
 ```
 - Baixar o Visual Studio Code (https://code.visualstudio.com/).
 - Instalar a extensão "Live Server" no VS Code.
