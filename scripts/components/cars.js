@@ -2,13 +2,16 @@ import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 
 // Criar a geometria do carro
-export function createCar(scene, renderer, camera) {
+export function createCar(scene, camera, renderer) {
     const loader = new GLTFLoader();
 
     loader.load('/assets/models/cars/cartoon_car.glb', function (glb) {
-        const car = glb.scene;
-        car.scale.set(100, 100, 100);
-        scene.add(car);
+        const carModel = glb.scene;
+        carModel.scale.set(100, 100, 100);
+        carModel.traverse(c => {
+            c.castShadow = true;
+        });
+        scene.add(carModel);
 
         // Defina a posição inicial e final do modelo
         const positions = [
@@ -37,7 +40,7 @@ export function createCar(scene, renderer, camera) {
             const targetPosition = positions[positionIndex + 1];
 
             // Interpole a posição do modelo entre a posição inicial e final com base no progresso
-            car.position.lerpVectors(initialPosition, targetPosition, progress);
+            carModel.position.lerpVectors(initialPosition, targetPosition, progress);
 
             // Atualize o progresso da animação
             progress += speed;
@@ -57,7 +60,7 @@ export function createCar(scene, renderer, camera) {
                 const angle = Math.atan2(-direction.z, direction.x);
 
                 // Aplique a rotação ao modelo
-                car.rotation.y = angle;
+                carModel.rotation.y = angle;
             }
 
             renderer.render(scene, camera);

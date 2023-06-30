@@ -4,9 +4,12 @@ import { loader } from "../constants/loaders.js";
 export function createSideWalkOutsideBigger(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
     const sidewalkGeometry = new THREE.BoxGeometry(16000, 60, 1500);
-    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+    const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif')
+            loader.load('/assets/textures/calcada.avif', function (texture) {
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(2, 2);
+            })
     });
 
     // Posicionando Calçada
@@ -20,9 +23,12 @@ export function createSideWalkOutsideBigger(scene, pos_x, pos_y, pos_z, rotation
 export function createSideWalkOutsideSmaller(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
     const sidewalkGeometry = new THREE.BoxGeometry(13000, 60, 1500);
-    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+    const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif')
+            loader.load('/assets/textures/calcada.avif', function (texture) {
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(2, 2);
+            })
     });
 
     // Posicionando Calçada
@@ -35,9 +41,12 @@ export function createSideWalkOutsideSmaller(scene, pos_x, pos_y, pos_z, rotatio
 export function createSideWalkBigger(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
     const sidewalkGeometry = new THREE.BoxGeometry(3440, 60, 1500);
-    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+    const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif')
+            loader.load('/assets/textures/calcada.avif', function (texture) {
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(2, 2);
+            })
     });
 
     // Posicionando Calçada
@@ -51,9 +60,12 @@ export function createSideWalkBigger(scene, pos_x, pos_y, pos_z, rotation) {
 export function createSideWalkMediun(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
     const sidewalkGeometry = new THREE.BoxGeometry(3790, 60, 1000);
-    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+    const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif')
+            loader.load('/assets/textures/calcada.avif', function (texture) {
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(2, 2);
+            })
     });
 
     // Posicionando Calçada
@@ -67,9 +79,12 @@ export function createSideWalkMediun(scene, pos_x, pos_y, pos_z, rotation) {
 export function createSideWalkSmaller(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
     const sidewalkGeometry = new THREE.BoxGeometry(2800, 60, 1000);
-    const sidewalkMaterial = new THREE.MeshBasicMaterial({
+    const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
-            loader.load('/assets/textures/calcada.avif')
+            loader.load('/assets/textures/calcada.avif', function (texture) {
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(2, 2);
+            })
     });
 
     // Posicionando Calçada
@@ -90,7 +105,7 @@ export function createCentralSideWalkBigger(scene) {
     );
 
     // Criar o material do círculo
-    const circleMaterial = new THREE.MeshBasicMaterial({
+    const circleMaterial = new THREE.MeshStandardMaterial({
         map:
             loader.load('/assets/textures/calcada.png')
     });
@@ -113,7 +128,7 @@ export function createCentralSideWalkSmaller(scene) {
     );
 
     // Criar o material do círculo
-    const circleMaterial = new THREE.MeshBasicMaterial({
+    const circleMaterial = new THREE.MeshStandardMaterial({
         map:
             loader.load('/assets/textures/calcada.png')
     });

@@ -11,25 +11,25 @@ import * as THREE from "three";
 //     scene.add(light);
 // }
 
-export function addLight(scene){
-    // adicionando uma luz ambiente. Ela não gera sombras
-    const ambientLight = new THREE.AmbientLight(0x999999);
-    scene.add(ambientLight);
+export function addLight(scene) {
+    const light = new THREE.DirectionalLight(0xF7C869, 0.4); // soft white light
 
-    const spotLight = new THREE.SpotLight(0xFFFFFF);
-    scene.add(spotLight);
-    spotLight.intensity = 1.2;
-    spotLight.angle = 0.45;
-    spotLight.penumbra = 0.3;
-    spotLight.castShadow = true;
+    light.position.set(-30, 300, 1500);
+    light.target.position.set(-150, 0, -200);
+    light.castShadow = true;
 
-    spotLight.shadow.mapSize.width = 1024;
-    spotLight.shadow.mapSize.height = 1024;
-    spotLight.shadow.camera.near = 5;
-    spotLight.shadow.camera.far = 10;
-    spotLight.shadow.focus = 1;
-    
-    
+    let d = 4000;
+    let mapSize = 11000;
+
+    light.shadow.radius = 1000;
+    light.shadow.mapSize.width = mapSize;
+    light.shadow.mapSize.height = mapSize;
+    light.shadow.camera.top = light.shadow.camera.right = -d;
+    light.shadow.camera.bottom = light.shadow.camera.left = d;
+    light.shadow.camera.near = 1;
+    light.shadow.camera.far = 5000;
+
+    scene.add(light, light.target);
 }
 
 

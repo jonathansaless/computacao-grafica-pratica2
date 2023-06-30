@@ -1,14 +1,29 @@
 import * as THREE from "three";
-import { GLTFLoader } from "GLTFLoader";
+import { gltfLoader } from "../constants/loaders.js";
 
-export function createParkBench(scene, pos_x, pos_y, pos_z, rotation) {
+export function createParkBenches(scene) {
+    createParkBench(scene, -2150, 0, 3600, 0);
+    createParkBench(scene, 2150, 0, 3600, 0);
+    createParkBench(scene, -2150, 0, -3600, 180);
+    createParkBench(scene, 2150, 0, -3600, 180);
+
+    createParkBench(scene, 3600, 0, 2150, 90);
+    createParkBench(scene, -3600, 0, 2150, -90);
+    createParkBench(scene, 3600, 0, -2150, 90);
+    createParkBench(scene, -3600, 0, -2150, -90);
+
+}
+
+function createParkBench(scene, pos_x, pos_y, pos_z, rotation) {
     // Carregar um modelo GLTF no meio da praça
-    const gltfLoader = new GLTFLoader();
     gltfLoader.load('/assets/models/square_components/park_bench.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
         model.scale.set(4, 4, 4);
         model.rotateY(THREE.MathUtils.degToRad(rotation));
+        model.traverse(c => {
+            c.castShadow = true;
+        });
         scene.add(model);
     });
 }
