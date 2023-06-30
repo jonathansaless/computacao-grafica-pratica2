@@ -6,12 +6,10 @@ export function createParkBenches(scene) {
     createParkBench(scene, 2150, 0, 3600, 0);
     createParkBench(scene, -2150, 0, -3600, 180);
     createParkBench(scene, 2150, 0, -3600, 180);
-
     createParkBench(scene, 3600, 0, 2150, 90);
     createParkBench(scene, -3600, 0, 2150, -90);
     createParkBench(scene, 3600, 0, -2150, 90);
     createParkBench(scene, -3600, 0, -2150, -90);
-
 }
 
 function createParkBench(scene, pos_x, pos_y, pos_z, rotation) {
