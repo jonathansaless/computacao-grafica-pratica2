@@ -1,6 +1,18 @@
 import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 
+export function createBuilding1(scene, pos_x, pos_y, pos_z) {
+    // Carregar o modelo GLB dos edificios
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load('/assets/models/buildings/building1.glb', function (gltf) {
+        const model = gltf.scene;
+        model.position.set(pos_x, pos_y, pos_z);
+        model.scale.set(2000, 2000, 2000);
+        model.rotateY(THREE.MathUtils.degToRad(-90));
+        scene.add(model);
+    });
+}
+
 export function createBuilding2(scene, pos_x, pos_y, pos_z) {
     // Carregar o modelo GLB dos edificios
     const gltfLoader = new GLTFLoader();
@@ -67,6 +79,42 @@ export function createBuilding7(scene, pos_x, pos_y, pos_z) {
         const model = gltf.scene;
         model.position.set(pos_x, pos_y, pos_z);
         model.scale.set(400, 400, 400);
+        scene.add(model);
+    });
+}
+
+export function createBuilding8(scene, pos_x, pos_y, pos_z) {
+    // Carregar o modelo GLB dos edificios
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load('/assets/models/buildings/building8.glb', function (gltf) {
+        const model = gltf.scene;
+        model.position.set(pos_x, pos_y, pos_z);
+        model.scale.set(200, 200, 200);
+        model.rotateY(THREE.MathUtils.degToRad(180));
+        scene.add(model);
+    });
+}
+
+export function createBuilding9(scene, pos_x, pos_y, pos_z) {
+    // Carregar o modelo GLB dos edificios
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load('/assets/models/buildings/building9.glb', function (gltf) {
+        const model = gltf.scene;
+        model.position.set(pos_x, pos_y, pos_z);
+        model.scale.set(70, 70, 70);
+        model.rotateY(THREE.MathUtils.degToRad(90));
+        scene.add(model);
+    });
+}
+
+export function createBuilding10(scene, pos_x, pos_y, pos_z) {
+    // Carregar o modelo GLB dos edificios
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load('/assets/models/buildings/building10.glb', function (gltf) {
+        const model = gltf.scene;
+        model.position.set(pos_x, pos_y, pos_z);
+        model.scale.set(150, 150, 150);
+        model.rotateY(THREE.MathUtils.degToRad(90));
         scene.add(model);
     });
 }

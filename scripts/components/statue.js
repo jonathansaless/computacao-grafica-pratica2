@@ -3,7 +3,7 @@ import * as THREE from "three";
 
 export function createStatue(scene) {
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load('/assets/models/square_components/juliaan_dillens.glb', function (gltf) {
+    gltfLoader.load('/assets/models/square_components/statue_juliaan_dillens.glb', function (gltf) {
         const model = gltf.scene;
         model.position.set(0, 20, 0);
         model.scale.set(100, 100, 100);
