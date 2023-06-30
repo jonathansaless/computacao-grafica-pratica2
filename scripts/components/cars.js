@@ -5,18 +5,18 @@ import { GLTFLoader } from "GLTFLoader";
 export function createCar(scene, renderer, camera) {
     const loader = new GLTFLoader();
 
-    loader.load('/assets/models/cartoon_car.glb', function (glb) {
+    loader.load('/assets/models/cars/cartoon_car.glb', function (glb) {
         const car = glb.scene;
         car.scale.set(100, 100, 100);
         scene.add(car);
 
         // Defina a posição inicial e final do modelo
         const positions = [
-            new THREE.Vector3(5000, 0.1, -5000),
-            new THREE.Vector3(5000, 0.1, 5000),
-            new THREE.Vector3(-5000, 0.1, 5000),
-            new THREE.Vector3(-5000, 0.1, -5000),
-            new THREE.Vector3(5000, 0.1, -5000)
+            new THREE.Vector3(5000, -70, -5000),
+            new THREE.Vector3(5000, -70, 5000),
+            new THREE.Vector3(-5000, -70, 5000),
+            new THREE.Vector3(-5000, -70, -5000),
+            new THREE.Vector3(5000, -70, -5000)
         ];
 
         // Defina a velocidade da animação

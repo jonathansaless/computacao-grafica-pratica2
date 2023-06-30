@@ -18,17 +18,17 @@ export function createSquare(scene) {
   scene.add(square);
 
 
-  // OK CALÇADA DE FORA
-  createSideWalkOutsideBigger(scene, 0, 1, 7250, 0);
-  createSideWalkOutsideBigger(scene, 0, 1, -7250, 0);
-  createSideWalkOutsideSmaller(scene, 7250, 1, 0, 90);
-  createSideWalkOutsideSmaller(scene, -7250, 1, 0, 90);
+  // // OK CALÇADA DE FORA
+  // createSideWalkOutsideBigger(scene, 0, 1, 7250, 0);
+  // createSideWalkOutsideBigger(scene, 0, 1, -7250, 0);
+  // createSideWalkOutsideSmaller(scene, 7250, 1, 0, 90);
+  // createSideWalkOutsideSmaller(scene, -7250, 1, 0, 90);
 
-  // OK CALÇADAS MAIORIES QUE ENCONTRAM AO CENTRO
-  createSideWalkBigger(scene, 2800, 1, -20, 0);
-  createSideWalkBigger(scene, -2800, 1, -20, 0);
-  createSideWalkBigger(scene, -20, 1, 2800, 90);
-  createSideWalkBigger(scene, -20, 1, -2800, 90);
+  // // OK CALÇADAS MAIORIES QUE ENCONTRAM AO CENTRO
+  // createSideWalkBigger(scene, 2800, 1, -20, 0);
+  // createSideWalkBigger(scene, -2800, 1, -20, 0);
+  // createSideWalkBigger(scene, -20, 1, 2800, 90);
+  // createSideWalkBigger(scene, -20, 1, -2800, 90);
 
   // // OK CALÇADAS DAS BEIRAS
   // createSideWalkMediun(scene, -2625, 1, -4000, 0);
@@ -45,7 +45,7 @@ export function createSquare(scene) {
   // createCentralSideWalkSmaller(scene);
 
   // // OK CRIAÇÃO DE ESTÁTUA CENTRAL
-  createStatue(scene);
+  // createStatue(scene);
 
   // // OK BANCOS DA PRAÇA
   // createParkBench(scene, 2400, 0, -600, 0);

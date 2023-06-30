@@ -35,7 +35,7 @@ function init() {
 
     setController(camera, renderer);
     // createSky(scene, renderer);
-    // createCar(scene, renderer, camera);
+    createCar(scene, renderer, camera);
     initSky(scene, camera, renderer);
     createSquare(scene);
     createStreets(scene);

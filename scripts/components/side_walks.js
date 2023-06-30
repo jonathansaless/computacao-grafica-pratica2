@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { loader } from "../constants/loaders.js";
-import { degreesToRadians } from "../constants/convertions.js";
 
 export function createSideWalkOutsideBigger(scene, pos_x, pos_y, pos_z, rotation) {
     // Geometria das Calçadas
@@ -13,7 +12,7 @@ export function createSideWalkOutsideBigger(scene, pos_x, pos_y, pos_z, rotation
     // Posicionando Calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
-    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
     sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
@@ -29,7 +28,7 @@ export function createSideWalkOutsideSmaller(scene, pos_x, pos_y, pos_z, rotatio
     // Posicionando Calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
-    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
     scene.add(sidewalk);
 }
 
@@ -44,7 +43,7 @@ export function createSideWalkBigger(scene, pos_x, pos_y, pos_z, rotation) {
     // Posicionando Calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
-    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
     sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
@@ -60,7 +59,7 @@ export function createSideWalkMediun(scene, pos_x, pos_y, pos_z, rotation) {
     // Posicionando Calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
-    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
     sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
@@ -76,7 +75,7 @@ export function createSideWalkSmaller(scene, pos_x, pos_y, pos_z, rotation) {
     // Posicionando Calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
     sidewalk.position.set(pos_x, pos_y, pos_z);
-    sidewalk.rotation.y = degreesToRadians(rotation);
+    sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
     sidewalk.receiveShadow = true;
     scene.add(sidewalk);
 }
