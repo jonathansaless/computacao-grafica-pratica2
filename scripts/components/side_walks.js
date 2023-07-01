@@ -76,5 +76,5 @@ export function createSideWalks(scene) {
 
     // Calçadas centrais
     createCentralSideWalk(scene, 1500, 100);
-    createCentralSideWalk(scene, 1300, 100);
+    createCentralSideWalk(scene, 1300, 200);
 }
