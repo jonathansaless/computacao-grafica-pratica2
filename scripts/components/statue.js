@@ -9,15 +9,7 @@ export function createStatue(scene) {
         model.position.set(0, 20, 0);
         // Define a escala da estátua
         model.scale.set(100, 100, 100);
-        // Percorre todos os nós do modelo
-        model.traverse(function(node) {
-            // Verifica se o nó é um mesh
-            if(node.isMesh){
-                // Habilita a emissão de sombra para o mesh
-                node.castShadow = true;
-            }
-        })
-        
+                
         // Habilita a emissão e o recebimento de sombra para o modelo
         model.castShadow = true;
         model.receiveShadow = true;
