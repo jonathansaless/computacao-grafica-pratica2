@@ -12,7 +12,11 @@ body {
 	top: 0px;
 	width: 100%;
 	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
+	pointer-events: none;
 	z-index: 1;
 }
 
