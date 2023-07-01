@@ -3,7 +3,7 @@ import * as THREE from "three";
 
 import { createPublicSquare } from "./components/public_square.js";
 import { createPeople } from "./components/people.js";
-import {OrbitControls} from "orbitControls";
+import { OrbitControls } from "orbitControls";
 
 let camera, scene, renderer;
 const clock = new THREE.Clock();
@@ -11,62 +11,56 @@ const clock = new THREE.Clock();
 init();
 
 function init() {
-    // SCENE
+    // CRIAÇÃO DA CENA
     scene = new THREE.Scene();
 
-    // RENDERIZADOR
+    // CRIAÇÃO DO RENDERIZADOR
     renderer = new THREE.WebGLRenderer();
-    // renderer.setClearColor(0x1F1F1F, 1);
-    // Renderizador ajusta a qualidade de renderização de acordo com a taxa de pixel do dispositivo
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    // Habilitando sombras ao renderizados
-
     document.body.appendChild(renderer.domElement);
 
+    // Habilitar sombras no renderizador
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    // CÂMERA
+    // CRIAÇÃO DA CÂMERA
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 20000);
     camera.position.set(0, 1000, 6500);
 
-    // CONTROLADOR
+    // CRIAÇÃO DO CONTROLADOR
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.minDistance = 2000;
     controls.maxDistance = 6000;
-    // desabilita a movimentação com o botão direito do mouse
+    // Desabilitar a movimentação com o botão direito do mouse
     // controls.enablePan = false;
-    // Defina o ângulo mínimo de rotação
+    // Definir o ângulo mínimo de rotação
     const minPolarAngle = THREE.MathUtils.degToRad(90); // Por exemplo, 90 graus
-    // Aplique o limite superior aos controles, sendo possível visualizar apenas a parte de cima da tela
+    // Aplicar o limite superior aos controles, permitindo visualizar apenas a parte de cima da tela
     controls.maxPolarAngle = minPolarAngle;
-    
+
+    // CRIAÇÃO DA PRAÇA PÚBLICA
     createPublicSquare(scene, camera, renderer);
 }
 
-// const light = new THREE.DirectionalLight(0xFFFFFF, 0.5);
-// scene.add(light);
-
-// ao mudar o tamanho da tela, será renderizado no novo tamanho da tela. Isso torna o projeto mais responsivo
+// Função de redimensionamento da janela
 window.onresize = function () {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+// Criação das animações das pessoas
 const { updateAnimations } = createPeople(scene);
-
 
 // Função de animação
 function animate() {
     requestAnimationFrame(animate);
-    
-    // Obtenha o tempo decorrido desde o último frame
+
+    // Obtenção do tempo decorrido desde o último frame
     const deltaTime = clock.getDelta();
 
-    // Atualize a animação da personagem
+    // Atualização das animações das pessoas
     updateAnimations(deltaTime);
 
     renderer.render(scene, camera);

@@ -1,9 +1,11 @@
 import * as THREE from "three";
 import { gltfLoader } from "../constants/loaders.js";
 
+// Função para criar pessoas na cena
 export function createPeople(scene) {
     const people = [];
 
+    // Criação de pessoas individuais e armazenamento em um array
     people.push(createPerson(scene, '/assets/models/people/person1.glb', -2500, 50, -500, 4));
     people.push(createPerson(scene, '/assets/models/people/person2.glb', 0, 0, -7200, 200));
     people.push(createPerson(scene, '/assets/models/people/person3.glb', -500, 30, 3000, 310, 90));
@@ -26,14 +28,19 @@ export function createPeople(scene) {
 function createPerson(scene, modelPath, pos_x, pos_y, pos_z, scale, rotation = 0) {
     let mixer; // Variável para armazenar a instância de AnimationMixer
 
+    // Carregamento do modelo da pessoa usando o gltfLoader
     gltfLoader.load(modelPath, function (gltf) {
         const model = gltf.scene;
+        // Definindo a posição da pessoa
         model.position.set(pos_x, pos_y, pos_z);
+        // Definindo a escala da pessoa
         model.scale.set(scale, scale, scale);
+        // Definindo a rotação da pessoa
         model.rotateY(THREE.MathUtils.degToRad(rotation));
         model.traverse(c => {
             c.castShadow = true;
         });
+        // Adicionando a pessoa à cena
         scene.add(model);
 
         const animations = gltf.animations;

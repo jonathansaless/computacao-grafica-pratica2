@@ -10,39 +10,39 @@ import { createSideWalks } from "./side_walks.js";
 import { createParkDumps } from "./dumps.js";
 import { createParkLamps } from "./lamps.js";
 
-// Criação da Praça Pública
+// Função para criar a Praça Pública
 export function createPublicSquare(scene, camera, renderer) {
-
-  // CÉU
+  
+  // Criação do Céu
   createSky(scene, camera, renderer);
 
-  // CARRO
+  // Criação do Carro
   createCar(scene, camera, renderer);
   
-  // GRAMADO
+  // Criação do Gramado
   createLawn(scene);
 
-  // CALÇADAS
+  // Criação das Calçadas
   createSideWalks(scene);
 
-  // CRIAÇÃO DE ESTÁTUA CENTRAL
+  // Criação da Estátua Central
   createStatue(scene);
 
-  // BANCOS DA PRAÇA
+  // Criação dos Bancos da Praça
   createParkBenches(scene);
 
-  // LIXEIRAS DA PRAÇA
+  // Criação das Lixeiras da Praça
   createParkDumps(scene);
   
-  // LAMPADAS DA PRAÇA
+  // Criação das Lâmpadas da Praça
   createParkLamps(scene);
   
-  // ÁRVORES
+  // Criação das Árvores
   createTrees(scene);
 
-  // PRÉDIOS
+  // Criação dos Prédios
   createBuildings(scene);
 
-  // ESTRADAS
+  // Criação das Estradas
   createStreets(scene);
 }

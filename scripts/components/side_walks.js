@@ -1,8 +1,11 @@
 import * as THREE from "three";
 import { textureLoader } from "../constants/loaders.js";
 
+// Função para criar uma calçada lateral
 function createSideWalk(scene, pos_x, pos_y, pos_z, rotation, width, length) {
+    // Criação da geometria da calçada como um paralelepípedo (caixa)
     const sidewalkGeometry = new THREE.BoxGeometry(width, 60, length);
+    // Criação do material da calçada com uma textura de calcada.avif
     const sidewalkMaterial = new THREE.MeshStandardMaterial({
         map:
             textureLoader.load('/assets/textures/calcada.avif', function (texture) {
@@ -11,32 +14,45 @@ function createSideWalk(scene, pos_x, pos_y, pos_z, rotation, width, length) {
             })
     });
 
+    // Criação do objeto Mesh para representar a calçada
     const sidewalk = new THREE.Mesh(sidewalkGeometry, sidewalkMaterial);
+    // Definindo a posição da calçada
     sidewalk.position.set(pos_x, pos_y, pos_z);
+    // Definindo a rotação da calçada em torno do eixo Y (sentido anti-horário em radianos)
     sidewalk.rotation.y = THREE.MathUtils.degToRad(rotation);
+    // Habilitando a calçada para receber sombras
     sidewalk.receiveShadow = true;
+    // Adicionando a calçada à cena
     scene.add(sidewalk);
 }
 
+// Função para criar a calçada central
 function createCentralSideWalk(scene, radius, height) {
+    // Criação da geometria da calçada como um cilindro (círculo)
     const circleGeometry = new THREE.CylinderGeometry(
         radius, // raio
         radius, // raio
         height, // altura do cilindro
-        32      // segmentos do circulo
+        32      // segmentos do círculo
     );
 
+    // Criação do material da calçada com uma textura de calcada.png
     const circleMaterial = new THREE.MeshStandardMaterial({
         map:
             textureLoader.load('/assets/textures/calcada.png')
     });
 
+    // Criação do objeto Mesh para representar a calçada
     const circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
+    // Definindo a posição da calçada
     circleMesh.position.set(0, height / 2, 0);
+    // Habilitando a calçada para receber sombras
     circleMesh.receiveShadow = true;
+    // Adicionando a calçada à cena
     scene.add(circleMesh);
 }
 
+// Função para criar todas as calçadas na cena
 export function createSideWalks(scene) {
     // Calçadas externas
     createSideWalk(scene, 0, 1, 7250, 0, 16000, 1500);

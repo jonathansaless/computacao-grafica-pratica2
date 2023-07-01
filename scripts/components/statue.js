@@ -1,18 +1,28 @@
 import { gltfLoader } from "../constants/loaders.js";
 
+// Função para criar uma estátua na cena
 export function createStatue(scene) {
+    // Carrega o modelo da estátua usando o gltfLoader
     gltfLoader.load('/assets/models/square_objects/statue_juliaan_dillens.glb', function (glb) {
         const model = glb.scene;
+        // Define a posição da estátua
         model.position.set(0, 20, 0);
+        // Define a escala da estátua
         model.scale.set(100, 100, 100);
+        // Percorre todos os nós do modelo
         model.traverse(function(node) {
+            // Verifica se o nó é um mesh
             if(node.isMesh){
+                // Habilita a emissão de sombra para o mesh
                 node.castShadow = true;
             }
         })
         
-        model.castShadow = true;    // habilitar a emissão de sombra
-        model.receiveShadow = true; // habilitar o recebimento de sombra
+        // Habilita a emissão e o recebimento de sombra para o modelo
+        model.castShadow = true;
+        model.receiveShadow = true;
+        
+        // Adiciona o modelo da estátua à cena
         scene.add(model);
     });
 }
