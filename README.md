@@ -25,4 +25,4 @@ git clone https://github.com/jonathansaless/computacao-grafica-pratica2.git
 - Após instalado, clicar com o botão direito do mouse sobre o arquivo index.html e selecionar a opção "Open with Live Server". Abrirá uma nova guia de seu navegador com uma execução local do projeto.
 
 # Apresentação
-[<img src="https://i.ytimg.com/vi/AnsP_ctWqVs/maxresdefault.jpg">](https://youtu.be/AnsP_ctWqVs "Apresentação do Trabalho Prático 2 de Computação Gráfica")
+[<img src="https://i.ytimg.com/vi/mqLXZPD-4AE/maxresdefault.jpg">](https://youtu.be/mqLXZPD-4AE "Apresentação do Trabalho Prático 2 de Computação Gráfica")
