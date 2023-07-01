@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Sky } from "sky"
+import { Sky } from "sky";
 
 let sky, sun;
 

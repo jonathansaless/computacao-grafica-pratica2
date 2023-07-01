@@ -1,4 +1,3 @@
-// Importar a biblioteca Three.js
 import * as THREE from "three";
 
 import { createPublicSquare } from "./components/public_square.js";
@@ -30,14 +29,13 @@ function init() {
 
     // CRIAÇÃO DO CONTROLADOR
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 2000;
-    controls.maxDistance = 6000;
-    // Desabilitar a movimentação com o botão direito do mouse
-    // controls.enablePan = false;
-    // Definir o ângulo mínimo de rotação
-    const minPolarAngle = THREE.MathUtils.degToRad(90); // Por exemplo, 90 graus
+    controls.minDistance = 1000;
+    controls.maxDistance = 6500;
+    
+    // Definir o ângulo maximo de rotação
+    const maxPolarAngle = THREE.MathUtils.degToRad(90); // 90 graus
     // Aplicar o limite superior aos controles, permitindo visualizar apenas a parte de cima da tela
-    controls.maxPolarAngle = minPolarAngle;
+    controls.maxPolarAngle = maxPolarAngle;
 
     // CRIAÇÃO DA PRAÇA PÚBLICA
     createPublicSquare(scene, camera, renderer);
