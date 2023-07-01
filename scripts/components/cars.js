@@ -1,13 +1,11 @@
 import * as THREE from "three";
-import { GLTFLoader } from "GLTFLoader";
+import { gltfLoader } from "../constants/loaders.js";
 
 // Criação do carro
 export function createCar(scene, camera, renderer) {
-    // Criação de um objeto loader usando a classe GLTFLoader do Three.js
-    const loader = new GLTFLoader();
 
-    // Carregando o modelo do carro usando o loader
-    loader.load('/assets/models/cars/cartoon_car.glb', function (glb) {
+    // Carregando o modelo do carro usando o gltfLoader
+    gltfLoader.load('/assets/models/cars/cartoon_car.glb', function (glb) {
         // Obtendo a cena do modelo do carro
         const carModel = glb.scene;
 
