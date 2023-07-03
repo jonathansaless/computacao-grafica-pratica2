@@ -23,6 +23,6 @@ git clone https://github.com/jonathansaless/computacao-grafica-pratica2.git
 - Baixar o Visual Studio Code (https://code.visualstudio.com/).
 - Instalar a extensão "Live Server" no VS Code.
 - Após instalado, clicar com o botão direito do mouse sobre o arquivo index.html e selecionar a opção "Open with Live Server". Abrirá uma nova guia de seu navegador com uma execução local do projeto.
-
+ 
 # Apresentação
 [<img src="https://i.ytimg.com/vi/mqLXZPD-4AE/maxresdefault.jpg">](https://youtu.be/mqLXZPD-4AE "Apresentação do Trabalho Prático 2 de Computação Gráfica")
